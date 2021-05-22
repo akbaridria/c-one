@@ -2,6 +2,7 @@ import { createWebHistory, createRouter } from 'vue-router';
 import Facts from '../views/Facts';
 import Chi from '../views/Chi'
 import Trades from '../views/Trades'
+import Predict from '../views/Predict'
 const routes = [
     {
         path : "/",
@@ -18,6 +19,11 @@ const routes = [
         path : "/Trades",
         name : "Trades",
         component : Trades
+    },
+    {
+        path : "/Predict",
+        name : "Predict",
+        component : Predict
     }
 ];
 
