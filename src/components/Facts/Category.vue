@@ -1,7 +1,7 @@
 <template>
     <div class="card ms-2" style="width: 22rem; height : 50vh">
         <div class="card-body">
-            <h5 class="card-title text-muted text-end mb-4">Wallet Size</h5>
+            <h5 class="card-title text-muted text-center mb-4">Wallet Size</h5>
             <apexchart width="320" type="donut" :options="options" :series="series"></apexchart>
         </div>
     </div>
@@ -10,7 +10,7 @@
 
 
 export default {
-    name : "WalletCategory",
+    name : "Category",
     data() {
             return {
                 options : {

@@ -1,12 +1,7 @@
 <template>
     <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;">
-    <span class="d-flex align-items-center justify-content-between flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-      <span class="fs-10 fw-semibold"><strong>Top 10 Trader By Volume</strong></span>
-      <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width : 130px">
-        <option selected>All Network</option>
-        <option value="1">Ethereum</option>
-        <option value="2">BSC</option>
-      </select>
+    <span class="d-flex flex-row-reverse align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+      <span class="fs-10 text-muted "><strong>Top 20 Traders By Volume</strong></span>
     </span>
     <div class="list-group list-group-flush border-bottom" style="overflow-y: auto; height : 90vh" >
         <a href="#" class="list-group-item list-group-item-action active lh-tight" aria-current="true">

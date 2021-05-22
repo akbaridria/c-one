@@ -66,6 +66,7 @@ main {
   max-height: 100vh;
   overflow-x: auto;
   overflow-y: hidden;
+  max-width: 100vw;
 }
 
 ion-icon {
