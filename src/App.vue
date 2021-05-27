@@ -23,12 +23,12 @@ export default {
   },
   mounted() {
     const bootstrap = require('bootstrap')
-  this.$nextTick(function () {
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-    tooltipTriggerList.map(function (tooltipTriggerEl) {
-      return new bootstrap.Tooltip(tooltipTriggerEl)
+    this.$nextTick(function () {
+      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+      })
     })
-  })
 }
 }
 </script>
@@ -69,7 +69,15 @@ main {
   
 }
 
+input[type="text"]:focus, input[type="checkbox"]:focus, select:focus.form-select {
+  border-color: rgb(165, 165, 165);
+  box-shadow: 0 0 0 ;
+  outline: 0 none;
+}
+
 ion-icon {
   font-size: 24px;
 }
+
+
 </style>

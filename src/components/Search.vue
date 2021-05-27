@@ -25,7 +25,7 @@
             </select>
         </div>
         <div style="width : 10rem;">
-        <button type="button" class="btn btn-primary btn-sm" >Search</button>
+        <button type="button" class="btn btn-primary btn-sm"  >Search</button>
         </div>
     </div>
 </template>

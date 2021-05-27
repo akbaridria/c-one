@@ -1,5 +1,8 @@
 <template>
     <div class="p-4">
+        <div class="loading">
+        <Loading />
+        </div>
         <div class="d-flex flex-column">
             <Search />
             <div class="Facts">
@@ -14,7 +17,7 @@
                 <div class="d-flex">
                     <div class="swap ms-2">
                         <div class="card">
-                            <div class="card-body" style="width : 48.5rem; height : 18rem">
+                            <div class="card-body" id="walletFats" style="width : 48.5rem; height : 18rem">
                                 <WalletAssets />
                             </div>
                         </div>
@@ -41,13 +44,15 @@ import WalletAssets from "../components/Facts/WalletAssets"
 import KPI from "../components/Facts/KPI"
 import Category from "../components/Facts/Category"
 import Search from "../components/Search"
+import Loading from "../components/Loading"
 export default {
     name : "Facts",
     components : {
         WalletAssets,
         KPI,
         Category,
-        Search
+        Search,
+        Loading
     }  
 }
 </script>
@@ -65,5 +70,8 @@ export default {
 .Facts {
     height : 80vh;
     overflow-y : auto;
+}
+.loading {
+    visibility: hidden;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;">
+    <div class="d-flex flex-column bg-white" style="width: 380px;">
     <span class="d-flex flex-row-reverse align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
       <span class="fs-10 text-muted "><strong>Top 20 Traders By Volume</strong></span>
     </span>
