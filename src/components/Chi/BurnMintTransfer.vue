@@ -1,5 +1,5 @@
 <template>
-    <apexchart type="line" height="250" :options="chartOptions" :series="series"></apexchart>
+    <apexchart type="line" height="400" :options="chartOptions" :series="series"></apexchart>
 </template>
 <script>
 export default {
@@ -7,9 +7,18 @@ export default {
     data() {
         return {
                     series: [{
-            name: "Swap",
+            name: "Mint Chi",
             data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-        }],
+        },
+        {
+            name: "Burn Chi",
+            data: [2, 22, 1, 55, 1, 66, 1, 8, 122]
+        },
+        {
+            name: "Transfer Chi",
+            data: [33, 2, 133, 31, 12, 6, 1, 8, 12]
+        }
+        ],
 
         chartOptions : {
           chart: {
@@ -26,7 +35,7 @@ export default {
           curve: 'smooth'
         },
         title: {
-          text: 'Total Swap By Date',
+          text: 'Burn, Mint, Transfer By Date',
           align: 'left'
         },
         fill: {

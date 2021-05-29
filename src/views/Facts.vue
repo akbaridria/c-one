@@ -29,7 +29,25 @@
                 <div class="swap p-2">
                     <div class="card">
                         <div class="card-body" style="width : 71.1rem; height : 20rem">
-                        <WalletAssets />
+                        <TotalUniqueUser />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="swap p-2">
+                    <div class="card">
+                        <div class="card-body" style="width : 71.1rem; height : 20rem">
+                        <TotalGasSpent />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="swap p-2">
+                    <div class="card">
+                        <div class="card-body" style="width : 71.1rem; height : 20rem">
+                        <AverageMedianSwap />
                         </div>
                     </div>
                 </div>
@@ -45,6 +63,9 @@ import KPI from "../components/Facts/KPI"
 import Category from "../components/Facts/Category"
 import Search from "../components/Search"
 import Loading from "../components/Loading"
+import TotalGasSpent from "../components/Facts/TotalGasSpent"
+import TotalUniqueUser from "../components/Facts/TotalUniqueUser"
+import AverageMedianSwap from "../components/Facts/AverageMedianSwap"
 export default {
     name : "Facts",
     components : {
@@ -52,7 +73,10 @@ export default {
         KPI,
         Category,
         Search,
-        Loading
+        Loading,
+        TotalGasSpent,
+        TotalUniqueUser,
+        AverageMedianSwap
     }  
 }
 </script>

@@ -6,10 +6,12 @@ export default {
     name : "WalletAssets",
     data() {
         return {
-                    series: [{
-            name: "Swap",
-            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-        }],
+            series: [
+                    {
+                        name: "User",
+                        data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+                    }
+                    ],
 
         chartOptions : {
           chart: {
@@ -26,7 +28,7 @@ export default {
           curve: 'smooth'
         },
         title: {
-          text: 'Total Swap By Date',
+          text: 'Total Unique Users By Date',
           align: 'left'
         },
         fill: {

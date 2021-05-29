@@ -7,9 +7,14 @@ export default {
     data() {
         return {
                     series: [{
-            name: "Swap",
+            name: "Average Swap",
             data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-        }],
+        },
+        {
+            name: "Median Swap",
+            data: [2, 22, 1, 55, 1, 66, 1, 8, 122]
+        }
+        ],
 
         chartOptions : {
           chart: {
@@ -26,7 +31,7 @@ export default {
           curve: 'smooth'
         },
         title: {
-          text: 'Total Swap By Date',
+          text: 'Average And Median Swap volume',
           align: 'left'
         },
         fill: {
