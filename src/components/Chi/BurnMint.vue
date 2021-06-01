@@ -1,26 +1,36 @@
 <template>
-    <apexchart type="line" height="250" :options="chartOptions" :series="series"></apexchart>
+  <div class="card ms-2 mt-2" style="width : 71.1rem; height : 30rem">
+        <div class="card-body mt-3">
+            <apexchart type="line" height="400" :options="chartOptions" :series="series"></apexchart>
+        </div>
+    </div>
+    
 </template>
 <script>
 export default {
-    name : "Unique Address",
+    name : "AverageMedianSwap",
     props : {
-      gas_spent : Array,
-      x_gas : Array
+      mint : Array,
+      burn : Array,
+      x_chi : Array
       },
     computed : {
       dataSeriesXaxis: function() {
-        const {gas_spent, x_gas} = this
+        const {mint, burn, x_chi} = this
         return {
-          gas_spent, x_gas
+          mint,burn, x_chi
         }
       }
     },
     data() {
         return {
         series: [{
-            name: "Swap",
-            data: this.gas_spent
+            name: "Mint",
+            data: this.mint
+        },
+        {
+            name: "Burn",
+            data: this.burn
         }],
 
         chartOptions : {
@@ -38,7 +48,7 @@ export default {
           curve: 'smooth'
         },
         title: {
-          text: 'Total Gas Spent By Date',
+          text: 'Mint and Burn Chi Gas Token By Date',
           align: 'left'
         },
         fill: {
@@ -52,35 +62,25 @@ export default {
         },
         
         xaxis: {
-          categories: this.x_gas,
+          categories: this.x_chi,
           labels: {
             show : true,
             style : {
               fontSize : '8px'
             }
           }
-        },
-         yaxis: {
-        labels : {
-          formatter: function(val) {
-            var d = (val).toLocaleString('en-US', {
-                style: 'currency',
-                currency: 'USD',
-              });
-            return d
-          }
         }
-      }
         }
   
       }
     },
     methods : {
       updateChart(val) {
-        this.series[0].data = val.gas_spent
+        this.series[0].data = val.mint
+        this.series[1].data = val.burn
         this.chartOptions = {
           xaxis : {
-            categories : val.x_gas
+            categories : val.x_chi
           }
         }
       }

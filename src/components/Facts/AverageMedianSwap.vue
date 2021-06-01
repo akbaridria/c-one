@@ -3,18 +3,30 @@
 </template>
 <script>
 export default {
-    name : "WalletAssets",
+    name : "AverageMedianSwap",
+    props : {
+      average : Array,
+      median : Array,
+      x_average : Array
+      },
+    computed : {
+      dataSeriesXaxis: function() {
+        const {average, median, x_average} = this
+        return {
+          average,median, x_average
+        }
+      }
+    },
     data() {
         return {
-                    series: [{
-            name: "Average Swap",
-            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+        series: [{
+            name: "Average",
+            data: this.average
         },
         {
-            name: "Median Swap",
-            data: [2, 22, 1, 55, 1, 66, 1, 8, 122]
-        }
-        ],
+            name: "Median",
+            data: this.median
+        }],
 
         chartOptions : {
           chart: {
@@ -25,13 +37,13 @@ export default {
           }
         },
         dataLabels: {
-          enabled: false
+          enabled: true
         },
         stroke: {
           curve: 'smooth'
         },
         title: {
-          text: 'Average And Median Swap volume',
+          text: 'Average Median Swap Volume By Date',
           align: 'left'
         },
         fill: {
@@ -43,12 +55,46 @@ export default {
             opacity: 0.5
           },
         },
+        
         xaxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+          categories: this.x_average,
+          labels: {
+            show : true,
+            style : {
+              fontSize : '8px'
+            }
+          }
+        },
+        yaxis: {
+        labels : {
+          formatter: function(val) {
+            var d = (val).toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+              });
+            return d
+          }
         }
+      }
         }
   
-                }
+      }
+    },
+    methods : {
+      updateChart(val) {
+        this.series[0].data = val.average
+        this.series[1].data = val.median
+        this.chartOptions = {
+          xaxis : {
+            categories : val.x_average
+          }
+        }
+      }
+    },
+    watch :{
+      dataSeriesXaxis: function(newVal) {
+        this.updateChart(newVal)
+      }
     }
 }
 </script>

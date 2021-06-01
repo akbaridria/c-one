@@ -16,7 +16,7 @@
         </router-link>
       </li>
       <li >
-        <router-link class="nav-link py-3 border-bottom" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Compare Swap" :to="{ name: 'Predict' }">
+        <router-link class="nav-link py-3 border-bottom" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Check Status Data" :to="{ name: 'Predict' }">
           <ion-icon name="git-compare-outline"></ion-icon>
         </router-link>
       </li>

@@ -7,7 +7,7 @@
                 <div class="col-1">
                     
                 </div>
-                <div class="col-2">
+                <div class="col-4">
                    <strong> Ticker</strong>
                 </div>
                 <div class="col-3">
@@ -15,36 +15,14 @@
                 </div>
                 <div class="col-4">
                     <strong>Balance</strong>
-                </div>
-                <div class="col">
-                    <strong>30d</strong>
-                </div>
-                
+                </div>                
             </div>
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
-            <Coin />
+            <div class="wentWrong sizeFont" v-if="listAssets.length === 0">
+                Oops.. something went wrong!
+            </div>
+            <div v-for="item in listAssets" v-bind:key="item.contract_address">
+                <Coin :logo="item.logo_url"  :ticker="item.contract_ticker_symbol" :decimal="item.contract_decimals" :balance="item.balance" :total="item.quote" />
+            </div>
             </div>
         </div>
     </div>
@@ -53,6 +31,9 @@
 import Coin from '../Trades/Coin'
 export default {
     name : "ListCoin",
+    props : {
+        listAssets : Array
+    },
     components : {
         Coin
     }
@@ -61,5 +42,10 @@ export default {
 <style scoped>
 .sizeFont {
     font-size: 12px;
+}
+.wentWrong {
+    margin : auto;
+    text-align: center;
+    margin-top : 100px;
 }
 </style>

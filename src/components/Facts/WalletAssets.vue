@@ -1,14 +1,28 @@
 <template>
+  <div>
     <apexchart type="line" height="250" :options="chartOptions" :series="series"></apexchart>
+  </div>
 </template>
 <script>
 export default {
     name : "WalletAssets",
+    props : {
+      dataSeries : Array,
+      x_axis : Array
+      },
+    computed : {
+      dataSeriesXaxis: function() {
+        const {dataSeries, x_axis} = this
+        return {
+          dataSeries, x_axis
+        }
+      }
+    },
     data() {
         return {
-                    series: [{
+        series: [{
             name: "Swap",
-            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+            data: this.dataSeries
         }],
 
         chartOptions : {
@@ -20,7 +34,7 @@ export default {
           }
         },
         dataLabels: {
-          enabled: false
+          enabled: true
         },
         stroke: {
           curve: 'smooth'
@@ -38,12 +52,34 @@ export default {
             opacity: 0.5
           },
         },
+        
         xaxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+          categories: this.x_axis,
+          labels: {
+            show : true,
+            style : {
+              fontSize : '8px'
+            }
+          }
         }
         }
   
-                }
+      }
+    },
+    methods : {
+      updateChart(val) {
+        this.series[0].data = val.dataSeries
+        this.chartOptions = {
+          xaxis : {
+            categories : val.x_axis
+          }
+        }
+      }
+    },
+    watch :{
+      dataSeriesXaxis: function(newVal) {
+        this.updateChart(newVal)
+      }
     }
 }
 </script>

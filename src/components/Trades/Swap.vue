@@ -5,16 +5,10 @@
                 <div class="content">Tx</div>
             </div>
         </div>
-        <div class="col-4">
+        <div style="width:250px">
             <div class="d-flex flex-column sizeFont">
-                <a href="#" target="_blank">0x8058a1ab ...</a>
-                <span>2020-03-01</span>
-            </div>
-        </div>
-        <div class="col">
-            <div class="d-flex flex-column sizeFont">
-                <span><strong>From</strong> 30 $ETH</span>
-                <span><strong>To</strong> 192338188888 $USDC</span>
+                <span>{{ tx_hash_elipsis }}</span>
+                <span><strong>{{ pair }}</strong></span>
             </div>
         </div>
     </div>
@@ -22,7 +16,13 @@
 
 <script>
 export default {
-    name : "swap"
+    name : "swap",
+    props : ['tx_hash', 'pair'],
+    computed : {
+        tx_hash_elipsis: function() {
+            return this.tx_hash
+        }
+    }
 }
 </script>
 

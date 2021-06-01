@@ -1,17 +1,29 @@
 <template>
-    <apexchart type="line" height="250" :options="chartOptions" :series="series"></apexchart>
+<div>
+    <apexchart type="line" height="300" :options="chartOptions" :series="series"></apexchart>
+</div>
 </template>
 <script>
 export default {
-    name : "WalletAssets",
+    name : "Unique Address",
+    props : {
+      unique_address : Array,
+      x_unique : Array
+      },
+    computed : {
+      dataSeriesXaxis: function() {
+        const {unique_address, x_unique} = this
+        return {
+          unique_address, x_unique
+        }
+      }
+    },
     data() {
         return {
-            series: [
-                    {
-                        name: "User",
-                        data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-                    }
-                    ],
+        series: [{
+            name: "Swap",
+            data: this.unique_address
+        }],
 
         chartOptions : {
           chart: {
@@ -22,13 +34,13 @@ export default {
           }
         },
         dataLabels: {
-          enabled: false
+          enabled: true
         },
         stroke: {
           curve: 'smooth'
         },
         title: {
-          text: 'Total Unique Users By Date',
+          text: 'Total Unique User By Date',
           align: 'left'
         },
         fill: {
@@ -40,12 +52,34 @@ export default {
             opacity: 0.5
           },
         },
+        
         xaxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+          categories: this.x_unique,
+          labels: {
+            show : true,
+            style : {
+              fontSize : '8px'
+            }
+          }
         }
         }
   
-                }
+      }
+    },
+    methods : {
+      updateChart(val) {
+        this.series[0].data = val.unique_address
+        this.chartOptions = {
+          xaxis : {
+            categories : val.x_unique
+          }
+        }
+      }
+    },
+    watch :{
+      dataSeriesXaxis: function(newVal) {
+        this.updateChart(newVal)
+      }
     }
 }
 </script>

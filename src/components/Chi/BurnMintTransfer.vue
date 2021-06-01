@@ -1,24 +1,42 @@
 <template>
-    <apexchart type="line" height="400" :options="chartOptions" :series="series"></apexchart>
+  <div class="card ms-2 mt-2" style="width : 71.1rem; height : 30rem">
+        <div class="card-body mt-3">
+            <apexchart type="line" height="400" :options="chartOptions" :series="series"></apexchart>
+        </div>
+    </div>
+    
 </template>
 <script>
 export default {
-    name : "WalletAssets",
+    name : "AverageMedianSwap",
+    props : {
+      mint : Array,
+      burn : Array,
+      transfer : Array,
+      x_chi : Array
+      },
+    computed : {
+      dataSeriesXaxis: function() {
+        const {mint, burn, transfer, x_chi} = this
+        return {
+          mint,burn, transfer, x_chi
+        }
+      }
+    },
     data() {
         return {
-                    series: [{
-            name: "Mint Chi",
-            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+        series: [{
+            name: "Mint",
+            data: this.mint
         },
         {
-            name: "Burn Chi",
-            data: [2, 22, 1, 55, 1, 66, 1, 8, 122]
+            name: "Burn",
+            data: this.burn
         },
         {
-            name: "Transfer Chi",
-            data: [33, 2, 133, 31, 12, 6, 1, 8, 12]
-        }
-        ],
+          name: "Transfer",
+          data: this.transfer
+        }],
 
         chartOptions : {
           chart: {
@@ -29,13 +47,13 @@ export default {
           }
         },
         dataLabels: {
-          enabled: false
+          enabled: true
         },
         stroke: {
           curve: 'smooth'
         },
         title: {
-          text: 'Burn, Mint, Transfer By Date',
+          text: 'Mint, Burn and Transfer Chi Gas Token By Date',
           align: 'left'
         },
         fill: {
@@ -47,12 +65,36 @@ export default {
             opacity: 0.5
           },
         },
+        
         xaxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+          categories: this.x_chi,
+          labels: {
+            show : true,
+            style : {
+              fontSize : '8px'
+            }
+          }
         }
         }
   
-                }
+      }
+    },
+    methods : {
+      updateChart(val) {
+        this.series[0].data = val.mint
+        this.series[1].data = val.burn
+        this.series[2].data = val.transfer
+        this.chartOptions = {
+          xaxis : {
+            categories : val.x_chi
+          }
+        }
+      }
+    },
+    watch :{
+      dataSeriesXaxis: function(newVal) {
+        this.updateChart(newVal)
+      }
     }
 }
 </script>
